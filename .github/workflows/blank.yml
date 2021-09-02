@@ -2,20 +2,15 @@ name: Webhook Test
 
 on:
   repository_dispatch:
-    types: [helloworld, test, none]
+    types:
+      - hello
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hello World
-        if: contains(github.event.action, 'hello')
+      - name: hello
+        if: github.event.action == 'hello'
         run: |
-          echo My name is P3TERX.
-          echo Hello World!
-
-      - name: TEST
-        if: github.event.action == 'test'
-        run: |
-          echo test
+          echo test666
